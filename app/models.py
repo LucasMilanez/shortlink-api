@@ -43,7 +43,7 @@ class Click(Base):
     __tablename__ = "clicks"
 
     id = Column(Integer, primary_key=True)
-    link_id = Column(Integer, ForeignKey("links.id"), nullable=False)
+    link_id = Column(Integer, ForeignKey("links.id"), nullable=False, index=True)
     clicked_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     user_agent = Column(String, nullable=True)
     referrer = Column(String, nullable=True)
