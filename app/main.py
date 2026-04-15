@@ -139,7 +139,7 @@ def delete_link(
 # ---------- Public redirect ----------
 
 
-@app.get("/{short_code}", tags=["Redirect"])
+@app.get("/r/{short_code}", tags=["Redirect"])
 def redirect(
     short_code: str,
     request: Request,

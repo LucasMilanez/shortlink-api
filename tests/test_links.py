@@ -33,7 +33,7 @@ def test_redirect_increments_counter(client, auth_headers):
     )
     code = create.json()["short_code"]
 
-    resp = client.get(f"/{code}", follow_redirects=False)
+    resp = client.get(f"/r/{code}", follow_redirects=False)
     assert resp.status_code == 307
     assert resp.headers["location"].startswith("https://example.com")
 
@@ -44,7 +44,12 @@ def test_redirect_increments_counter(client, auth_headers):
 
 
 def test_redirect_unknown_code_returns_404(client):
-    resp = client.get("/doesnotexist", follow_redirects=False)
+    resp = client.get("/r/doesnotexist", follow_redirects=False)
+    assert resp.status_code == 404
+
+
+def test_favicon_not_routed_to_redirect(client):
+    resp = client.get("/favicon.ico", follow_redirects=False)
     assert resp.status_code == 404
 
 
