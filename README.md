@@ -111,7 +111,7 @@ docker compose up --build
 | GET    | `/links`                   | List all links owned by current user| JWT  |
 | GET    | `/links/{id}/stats`        | Get click stats + recent timestamps | JWT  |
 | DELETE | `/links/{id}`              | Delete a link (and its clicks)      | JWT  |
-| GET    | `/{short_code}`            | Public redirect + click tracking    | —    |
+| GET    | `/r/{short_code}`          | Public redirect + click tracking    | —    |
 
 ### Example Flow
 
@@ -134,7 +134,7 @@ curl -X POST http://localhost:8000/links \
 # → {"id":1,"short_code":"Xy2_kqP","target_url":"https://github.com/...", ...}
 
 # 4. Use it (follows the redirect)
-curl -L http://localhost:8000/Xy2_kqP
+curl -L http://localhost:8000/r/Xy2_kqP
 
 # 5. Check analytics
 curl http://localhost:8000/links/1/stats -H "Authorization: Bearer $TOKEN"
