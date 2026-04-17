@@ -154,4 +154,4 @@ def redirect(
         user_agent=request.headers.get("user-agent"),
         referrer=request.headers.get("referer"),
     )
-    return RedirectResponse(url=link.target_url, status_code=307)
+    return RedirectResponse(url=link.target_url, status_code=302)

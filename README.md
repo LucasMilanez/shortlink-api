@@ -163,6 +163,7 @@ Tests run against an isolated in-memory SQLite database — no external dependen
 
 - **SQLAlchemy 2.0 with session-per-request** via FastAPI dependency injection
 - **Collision-safe short codes** with bounded retry loop (5 attempts — probability of failure is negligible at 7 chars of `secrets.token_urlsafe`)
+- **HTTP 302 (Found) for redirects** — avoids browser caching so every click hits the server and gets tracked. Use 301 only for permanent, cacheable redirects where analytics don't matter
 - **Click tracking is synchronous** for simplicity. For high traffic, this would move to a background task or message queue
 - **Authorization on every link query** — users can only access their own resources (`WHERE owner_id = ?`)
 - **No password in response schemas** — `hashed_password` never leaves the database layer

@@ -34,7 +34,7 @@ def test_redirect_increments_counter(client, auth_headers):
     code = create.json()["short_code"]
 
     resp = client.get(f"/r/{code}", follow_redirects=False)
-    assert resp.status_code == 307
+    assert resp.status_code == 302
     assert resp.headers["location"].startswith("https://example.com")
 
     link_id = create.json()["id"]
